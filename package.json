@@ -1,0 +1,57 @@
+{
+  "$schema": "https://www.raycast.com/schemas/extension.json",
+  "name": "esa",
+  "title": "esa",
+  "description": "esa",
+  "icon": "command-icon.png",
+  "author": "taroodr",
+  "license": "MIT",
+  "commands": [
+    {
+      "name": "search",
+      "title": "Search esa posts",
+      "description": "Find your esa team's posts",
+      "mode": "view"
+    }
+  ],
+  "preferences": [
+    {
+      "name": "apiKey",
+      "type": "password",
+      "required": true,
+      "title": "API key",
+      "description": "esa API key",
+      "placeholder": "Visit https://[team].esa.io/user/applications to obtain one"
+    },
+    {
+      "name": "teamName",
+      "type": "textfield",
+      "required": true,
+      "title": "esa team name",
+      "description": "esa team name",
+      "placeholder": "Your esa team name. https://[team_name].esa.io "
+    }
+  ],
+  "dependencies": {
+    "@raycast/api": "^1.28.0",
+    "node-fetch": "^3.2.0",
+    "swr": "^1.2.2"
+  },
+  "devDependencies": {
+    "@types/node": "~16.10.0",
+    "@types/react": "^17.0.28",
+    "@typescript-eslint/eslint-plugin": "^5.0.0",
+    "@typescript-eslint/parser": "^5.0.0",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "prettier": "^2.5.1",
+    "react-devtools": "^4.19.2",
+    "typescript": "^4.4.3"
+  },
+  "scripts": {
+    "build": "ray build -e dist",
+    "dev": "ray develop",
+    "fix-lint": "ray lint --fix",
+    "lint": "ray lint"
+  }
+}
