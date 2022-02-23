@@ -5,18 +5,15 @@ export default function Command() {
   const { data, setSearchText, error } = useSearch();
 
   if (error) {
-    showToast({ style: Toast.Style.Failure, title: error.message });
-    return;
+    showToast({ style: Toast.Style.Failure, title: "error has occurred", message: error.message });
   }
 
   return (
     <List
       onSearchTextChange={(text: string) => {
-        console.log(text);
         setSearchText(text);
       }}
       searchBarPlaceholder="Search posts..."
-      throttle
       isLoading={data == null || error}
     >
       {data?.posts?.map((post) => (

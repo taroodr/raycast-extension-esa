@@ -41,14 +41,19 @@ interface Preferences {
 }
 
 const buildFetcher = ({ teamName, apiKey, searchText }: { teamName: string; apiKey: string; searchText: string }) => {
-  return (): Promise<Posts> =>
-    fetch(`https://api.esa.io/v1/teams/${teamName}/posts?q=${searchText}&sort=best_match`, {
+  return async (): Promise<Posts> => {
+    const res = await fetch(`https://api.esa.io/v1/teams/${teamName}/posts?q=${searchText}&sort=best_match`, {
       headers: {
         Authorization: `Bearer ${apiKey}`,
       },
       method: "GET",
-      // 型はあとで頑張る
-    }).then((res) => res.json() as Promise<Posts>);
+    });
+    if (res.status !== 200) {
+      throw new Error(res.statusText);
+    }
+    // 型はあとで頑張る
+    return res.json() as Promise<Posts>;
+  };
 };
 
 export const useSearch = () => {
